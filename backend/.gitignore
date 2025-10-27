@@ -1,0 +1,43 @@
+# =========================
+# Python build junk
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Virtual environments
+venv/
+env/
+
+# =========================
+# Environment & credentials
+.env
+*.env
+
+# =========================
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Cache / local runtime
+*.log
+*.sqlite3
+storage.json
+
+# =========================
+# Uploads / results / temp
+uploads/
+results/
+trash/
+
+# =========================
+# Compiled / temp data
+*.pdf
+*.docx
+*.png
+*.jpg
+*.jpeg

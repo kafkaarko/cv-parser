@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+pymongo
+celery
+redis
+pdfplumber
+python-docx
+pdf2image
+pytesseract
+Pillow
+aiofiles
+regex
+python-multipart
+requests
+motor

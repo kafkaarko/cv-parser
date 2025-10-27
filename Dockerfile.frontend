@@ -1,0 +1,17 @@
+# Dockerfile.frontend
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY cv-ats/package*.json ./
+
+RUN npm install
+
+COPY cv-ats .
+
+# Build app-nya
+RUN npm run build
+
+# Serve pakai vite preview
+EXPOSE 5173
+CMD ["npm", "run", "preview", "--", "--host"]

@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: cvats-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - redis
+    volumes:
+      - ./backend:/app
+    restart: always
+
+  redis:
+    image: redis:7
+    container_name: cvats-redis
+    ports:
+      - "6379:6379"
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: cvats-celery
+    command: celery -A core.celery_config worker --loglevel=info
+    depends_on:
+      - backend
+      - redis
+    volumes:
+      - ./backend:/app
+    restart: always
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: cvats-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ./cv-ats:/app
+    restart: always
