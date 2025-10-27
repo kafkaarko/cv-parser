@@ -6,12 +6,12 @@ export default function KeywordModal() {
   const [newWord, setNewWord] = useState("");
 // Fetch data
 useEffect(() => {
-  axios.get("http://localhost:8000/api/keywords").then((res) => setKeywords(res.data));
+  axios.get("http://192.168.100.47/api/keywords").then((res) => setKeywords(res.data));
 }, []);
 
 // Save data
 const saveChanges = async () => {
-  await axios.post("http://localhost:8000/api/keywords", { skills_keywords: keywords });
+  await axios.post("http://192.168.100.47/api/keywords", { skills_keywords: keywords });
   alert("Keywords saved!");
 };
 

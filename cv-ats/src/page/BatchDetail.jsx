@@ -15,7 +15,7 @@ const BatchDetail = () => {
   useEffect(() => {
     const fetchBatch = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/batch/${batch_id}/results`);
+        const res = await axios.get(`http://192.168.100.47/api/batch/${batch_id}/results`);
         setData({ ...res.data, cvs: res.data.results }); // 🔥 normalize key
       } catch (err) {
         console.error(err);

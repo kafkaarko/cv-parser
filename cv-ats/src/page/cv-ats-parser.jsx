@@ -24,7 +24,7 @@ export default function CVATSParser() {
       formData.append("batch_id", batch_id);
       for (let file of files) formData.append("files", file);
 
-      const res = await fetch("http://localhost:8000/api/batch/upload", {
+      const res = await fetch("http://192.168.100.47/api/batch/upload", {
         method: "POST",
         body: formData,
       });

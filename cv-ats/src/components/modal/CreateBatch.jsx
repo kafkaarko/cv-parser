@@ -41,7 +41,7 @@ const CreateBatch = ({ isOpen, onClose, onSuccess }) => {
     form.append("uploaded_by", formData.uploaded_by);
 
     // 🔥 kirim ke backend
-    await axios.post("http://localhost:8000/api/batch/create",  toFormData(formData), {
+    await axios.post("http://192.168.100.47/api/batch/create",  toFormData(formData), {
       headers: { "Content-Type": "multipart/form-data" },
     });
 

@@ -11,7 +11,7 @@ const Sidebar = () => {
 
   const getBatch = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/batches");
+      const res = await axios.get("http://192.168.100.47/api/batches");
       setBatch(res.data);
     } catch (err) {
       console.error(err);
