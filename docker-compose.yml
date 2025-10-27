@@ -13,11 +13,15 @@ services:
     volumes:
       - ./backend:/app
     restart: always
+    networks:
+      - cvats-net
 
   redis:
     image: redis:7
     container_name: cvats-redis
     restart: always
+    networks:
+      - cvats-net
 
   celery:
     build:
@@ -31,6 +35,8 @@ services:
     volumes:
       - ./backend:/app
     restart: always
+    networks:
+      - cvats-net
 
   frontend:
     build:
@@ -42,3 +48,9 @@ services:
     depends_on:
       - backend
     restart: always
+    networks:
+      - cvats-net
+
+networks:
+  cvats-net:
+    driver: bridge
