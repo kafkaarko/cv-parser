@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ENDPOINT } from "../../constant";
 
 export default function KeywordModal() {
   const [keywords, setKeywords] = useState([]);
   const [newWord, setNewWord] = useState("");
 // Fetch data
 useEffect(() => {
-  axios.get("http://192.168.100.47/api/keywords").then((res) => setKeywords(res.data));
+  axios.get(`${ENDPOINT}api/keywords`).then((res) => setKeywords(res.data));
 }, []);
 
 // Save data
 const saveChanges = async () => {
-  await axios.post("http://192.168.100.47/api/keywords", { skills_keywords: keywords });
+  await axios.post(`${ENDPOINT}api/keywords`, { skills_keywords: keywords });
   alert("Keywords saved!");
 };
 

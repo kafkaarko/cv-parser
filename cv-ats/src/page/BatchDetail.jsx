@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Breadcrumbs from "../components/Breadcrumbs";
 import FilterBar from "../components/FilterBar";
 import CVTable from "../components/CVTable";
+import { ENDPOINT } from "../constant";
 
 const BatchDetail = () => {
   const { batch_id } = useParams();
@@ -15,7 +16,7 @@ const BatchDetail = () => {
   useEffect(() => {
     const fetchBatch = async () => {
       try {
-        const res = await axios.get(`http://192.168.100.47/api/batch/${batch_id}/results`);
+        const res = await axios.get(`${ENDPOINT}api/batch/${batch_id}/results`);
         setData({ ...res.data, cvs: res.data.results }); // 🔥 normalize key
       } catch (err) {
         console.error(err);

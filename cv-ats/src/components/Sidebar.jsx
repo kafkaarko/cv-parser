@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import { motion } from "framer-motion";
 import axios from "axios";
-import CreateBatch from "./modal/createBatch";
+import CreateBatch from "./modal/CreateBatch";
+import { ENDPOINT } from "../constant";
+
 
 const Sidebar = () => {
   const [batch, setBatch] = useState([]);
@@ -11,7 +13,7 @@ const Sidebar = () => {
 
   const getBatch = async () => {
     try {
-      const res = await axios.get("http://192.168.100.47/api/batches");
+      const res = await axios.get(`${ENDPOINT}api/batches`);
       setBatch(res.data);
     } catch (err) {
       console.error(err);
@@ -33,11 +35,18 @@ const Sidebar = () => {
         + Tambah Batch
       </button>
 
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
       <CreateBatch
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSuccess={getBatch}
       />
+
+      </motion.div>
 
       <h2 className="font-bold text-lg mb-2">Daftar Batch</h2>
       <nav className="space-y-1">
