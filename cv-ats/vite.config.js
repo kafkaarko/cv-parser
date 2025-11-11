@@ -11,4 +11,7 @@ export default defineConfig({
     }),
     tailwindcss(),  // ← Tailwind plugin terpisah
   ],
+  server: {
+    port: 2000
+  }
 })
